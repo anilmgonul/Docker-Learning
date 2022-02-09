@@ -25,4 +25,4 @@ It is a simple text file that contains a list of commands that the Docker client
 
 After installing the Docker, we can test Docker installation by running the following:
 
-![alt text](hello_world.jpg)
+![alt text](hello_world.png)
