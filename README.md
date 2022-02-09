@@ -90,7 +90,7 @@ Yukaridaki komutta, `-d` detach mode'da yani arka planda calismasini saglayacak 
 
 ![alt text](port.png)
 
-Boylelikle statik sitemize buradan erisebiliriz. [title](http://localhost:55003/)
+Boylelikle statik sitemize buradan erisebiliriz. [http://localhost:55003/](http://localhost:55003/)
 
 ![alt text](website.png)
 
