@@ -40,3 +40,15 @@ Bu baglamda, asagidaki komutu terminalimize yazalim:
 `pull` komutu **BusyBox** imajini bizim icin getirmis oldu. Bu imaji *Docker registry* 'den  aldi ve sistemimize yukledi. Sistemimizde bu imajin yuklendigini veya var olup olmadigini gormek icin ise `docker images` komutunu kullanmamiz gerekiyor.
 
 ![alt text](docker_images.png)
+
+## Docker Run
+
+Su ana kadar harika is cikardik ve konteynerimizi calistirma vakti. Bunu yapabilmemiz icin `docker run` komutunu kullanmamiz gerekiyor.
+
+![alt text](run_command.png)
+
+Hicbir sey olmamis gibi gorunse de, arka planda bir cok mekanizma harekete gecti. Oncelikle `run` komutunu kullandigimiz andan itibaren Docker client imaji buldu, ki bu busybox, ve onu konteynerimiza yukleyip calistirdi.
+
+Ayni asamada `echo` komutunu kullanarak bazi ciktilar da gorebiliriz.
+
+![alt text](echo.png)
