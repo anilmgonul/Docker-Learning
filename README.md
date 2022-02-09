@@ -118,4 +118,33 @@ Daha sonraki adimimiz ise bu web aplikasyonuyla imaj olusturmak.
 
 Ek bilgi olarak, iki sekil imaj'lar bulunur; *resmi imaj(official images)* ve *kullanici imaj(user images)*. Resmi imaj'lar Docker tarafindan desteklenen resmi sekilde olusturulmus imajlardir. Ornek olarak; `python`, `ubuntu`, `busybox` verilebilir.
 Kullanici imaj'lar ise resmi imaj'lari base alarak senin benim gibi kullanicilar tarafindan olusturulmus imaj'lardir.
-Dolayisiyla, olusturacagimiz basit web imaj'i kullanici imaji sinifina girmektedir. 
+Dolayisiyla, olusturacagimiz basit web imaj'i kullanici imaji sinifina girmektedir.
+
+### Dockerfile
+
+**Dockerfile** basitce bir text file olup, icinde bir cok komut barindirir. Basit bir sekilde imaj olustururken kullanabilecegimiz  bir otomasyondur. Dockerfile'da kullandigimiz komutlar neredeyse Linux komutlariyla birebir benzerlik gosterir. Baslarken, text-editor'umuzde ayni klasor icerisinde bos bir dosya olusturalim ve `Dockerfile` olarak adlandiralim.
+
+![alt text](preview_flaskapp.png)
+
+![alt text](dockerfile_creation.png)
+
+`Dockerfile` hazir ve imaj olusturmasina rahatlikla baslayabiliriz. Bu asamada `docker build` komutu gerekli islemleri bizim icin gerceklestirecek.
+
+```
+$ docker build -t yourusername/catnip .
+```
+
+`docker build` komutu kullanildiktan sonra opsiyonel olarak isim etiketi olan `-t` kullanildi ve lokasyon bilgisine yer verildi.
+Buradaki *username* kismi olusturdugunuz **Docker hub** hesabinizin kullanici adiyla ayni olmalidir.
+
+![alt text](docker_buildimage.png)
+
+Son adimda ise,
+```
+$ docker run -p 8888:5000 yourusername/catnip
+* Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+```
+komutuyla port 5000'i kullanarak server tarafinda harici bir port'da goruntuleyecegiz.
+
+Buradan bakabilirsiniz [http://localhost:8888/](http://localhost:8888/)
+![alt text](gif_website.png)
