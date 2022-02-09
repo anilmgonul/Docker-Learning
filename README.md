@@ -18,3 +18,11 @@ It is simply because it makes it possible to get far more apps running on the sa
 ### Dockerfile
 
 It is a simple text file that contains a list of commands that the Docker client calls while creating an image.
+
+## Getting Started with Docker
+
+### Setting up the Computer / Environment
+
+After installing the Docker, we can test Docker installation by running the following:
+
+![alt text](hello_world.jpg)
