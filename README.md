@@ -98,3 +98,24 @@ Son olarak ise, detached mode'da calisan konteyneri durdurmak icin `docker stop`
 
 
 ![alt text](stop_site.png)
+
+## DOCKER IMAGES
+
+Daha onceki konu anlatimlarinda Docker imajlarini gormustuk. Bu kisimda ise biraz daha detayli inceleyecegiz. Kendi imajimizi olusturarak konuyu kavramaya calisacagiz. Sonrasinda ise, olusturdugumuz imaji kullanarak lokal host'umuzda calistirarak AWS platformuna yukleyecegiz.
+
+### Ilk Imaj Olusturulmasi
+
+Bu calismada basit **Flask** ugulamasi kullanilacak. Uygulamanin sonunda websitesinde `.gif` haliyle bir kedi gosterilmek amaclanmistir. Baslarken, daha onceden olusturulmus *flask-app*'i github reposundan klonlayalim.
+
+```
+$ git clone https://github.com/prakhar1989/docker-curriculum.git
+
+$ cd docker-curriculum/flask-app
+
+```
+
+Daha sonraki adimimiz ise bu web aplikasyonuyla imaj olusturmak.
+
+Ek bilgi olarak, iki sekil imaj'lar bulunur; *resmi imaj(official images)* ve *kullanici imaj(user images)*. Resmi imaj'lar Docker tarafindan desteklenen resmi sekilde olusturulmus imajlardir. Ornek olarak; `python`, `ubuntu`, `busybox` verilebilir.
+Kullanici imaj'lar ise resmi imaj'lari base alarak senin benim gibi kullanicilar tarafindan olusturulmus imaj'lardir.
+Dolayisiyla, olusturacagimiz basit web imaj'i kullanici imaji sinifina girmektedir. 
