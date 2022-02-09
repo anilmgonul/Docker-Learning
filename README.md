@@ -36,3 +36,7 @@ Docker yuklenmesi ve calismasi test edildikten sonra, pratik kazanimi elde etmek
 Bu baglamda, asagidaki komutu terminalimize yazalim:
 
 ![alt text](pull_busybox.png)
+
+`pull` komutu **BusyBox** imajini bizim icin getirmis oldu. Bu imaji *Docker registry* 'den  aldi ve sistemimize yukledi. Sistemimizde bu imajin yuklendigini veya var olup olmadigini gormek icin ise `docker images` komutunu kullanmamiz gerekiyor.
+
+![alt text](docker_images.png)
