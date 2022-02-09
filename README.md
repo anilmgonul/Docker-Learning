@@ -71,6 +71,7 @@ Bebek adimlari atmaya basladik ve Docker'i kullanarak basit statik bie websitesi
 Uzerinden tekrar gecmek adina, `docker rm` ve `docker rmi` cok benzer iki komut. Basit bir dille anlatacak olursa;
 
 > docker image rm == docker rmi
+
 > docker container rm == docker rm
 
 Buna ek olarak, `docker run <image_adi>` bizim icin arkada yansinin indirilmemis oldugunu edip, `docker pull <image_adi>` komutunu tetikleyip, yansi indikten sonra calistirma isine devam eder. Boylece *docker run* ile dogrudan yansiyi cekip calistirabiliriz.  
