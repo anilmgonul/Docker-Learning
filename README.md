@@ -97,4 +97,4 @@ Boylelikle statik sitemize buradan erisebiliriz. [http://localhost:55003/](http:
 Son olarak ise, detached mode'da calisan konteyneri durdurmak icin `docker stop` komutu yeterli olacaktir. Bu komutu ister Container ID ile isterse konteynera verilen isim ile kullanabiliriz.
 
 
-[alt text](stop_site.png)
+![alt text](stop_site.png)
