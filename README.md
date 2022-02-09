@@ -94,7 +94,7 @@ Boylelikle statik sitemize buradan erisebiliriz. [http://localhost:55003/](http:
 
 ![alt text](website.png)
 
-Son olarak ise, detached mode'da calisan konteyneri durdurmak icin `docker stop` komutu yeterli olacaktir. Bu komutu ister Container ID ile isterse konteynera verilen isim ile kullanabiliriz.
+Son olarak ise, detached mode'da calisan konteyneri durdurmak icin `docker stop` komutu yeterli olacaktir. Bu komutu ister Container ID ile isterse konteynera verilen isim ile kullanasbiliriz.
 
 
 ![alt text](stop_site.png)
@@ -156,19 +156,17 @@ Bu kisimda uygulamalarin bulut ortamina nasil yuklenecegini gorecegiz. Boylece, 
 ### Docker push
 
 Bu isleme baslamadan once olusturdugumuz imaj'i yayinlamamaiz gerekiyor. Olusturdugumuz imaj'i host edecegimiz yer  ise [Docker hub](https://hub.docker.com/) olacak.
-a\
 Eger sisteme ilk defa imaj yukluyorsaniz, Docker Hub'dan oturum acilmasi gerekmektedir. Terminal uzerinden oturum acacagiz ve girdigimiz bilgilerin Docker Hub icin olusturdugumuz kredite edilmis bilgilerler ayni olmasi gerekiyor.
 
-![alt text](login_success.png)
+!![alt](login_success.png)
 
 Olusturdugumuz imaj'i yuklemek icin ise asagidaki komutu kullanacagiz.
 
 ```
 $ docker push yourusername/catnip
 ```
-<Kendi kullanici adinizi yaziniz>
+*Kendi kullanici adinizi yaziniz*
 
-
-![alt text](push_docker.png)
+![alt](push_docker.png)
 
 Eger her sey yolunda gittiyse, yuklediginiz imaj'i [buradan](https://hub.docker.com/r/anilmgonul/catnip/tags) gorebilirsiniz.
