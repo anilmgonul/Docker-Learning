@@ -170,3 +170,28 @@ $ docker push yourusername/catnip
 ![alt](push_docker.png)
 
 Eger her sey yolunda gittiyse, yuklediginiz imaj'i [buradan](https://hub.docker.com/r/anilmgonul/catnip/tags) gorebilirsiniz.
+
+### Beanstalk
+
+AWS Elastic Beanstalk sunucular uzerinde web uygulamalarini dagitip olceklendirmek icin kullanilan bir hizmettir.
+
+Bu asamanin saglikli ilerleyebilmesi icin [AWS](https://aws.amazon.com/) hesabina ihtiyacimiz var.
+
+Bu asamalari takip edebilirsiniz:
+
+- Oturum acin. AWS [console](https://signin.aws.amazon.com/signin?redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3Ffromtb%3Dtrue%26hashArgs%3D%2523%26isauthcode%3Dtrue%26state%3DhashArgsFromTB_us-east-1_b17fce76cc29af1f&client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&forceMobileApp=0&code_challenge=RC4khUpCiVZzIdw27pYzQoia23H0bhqADutgli6Bo0U&code_challenge_method=SHA-256)
+- **Elastic Beanstalk console** secilir
+
+![alt](create_application.png)
+
+- "Create New Application" secilir
+- Uygulamaya *unique* isim verilir
+- **New Environment** olusturulur
+- Bilgiler doldurulur
+- Configuration bolumunun altinda *Docker* , *predefined platform* olarak secilir
+
+![alt](platform.png)
+
+![alt](aqdocker_env.png)
+
+- Simdi ise uygulama kodumuzu yukleyebiliriz. Fakat, uygulamamiz Docker konteynerinda paketlendiginden sadece Elastic Beanstalk olarak bilgi sahibi olabiliyoruz.
