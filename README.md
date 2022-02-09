@@ -52,3 +52,11 @@ Hicbir sey olmamis gibi gorunse de, arka planda bir cok mekanizma harekete gecti
 Ayni asamada `echo` komutunu kullanarak bazi ciktilar da gorebiliriz.
 
 ![alt text](echo.png)
+
+Koyteynerlarin cok hizli calismis oldugunu gormus olduk. Simdi ise yeni bir komut ogrenme zamani. `docker ps` komutu bize suan ki calisan konteyneri gosterir. Varyasyon olarak ise calisan tum konteynerlari gostermek adina `docker ps -a` komutunu kullanacagiz.
+
+![alt text](docker_ps.png)
+
+Sahip oldugumuz konteynerlari temizlemek icin kullanmamiz gereken komut `docker rm`. Bunu yaparken konteyner ID'sini kullanabiliriz. Eger ki birden fazla konteyner temizlemek istiyorsak, her bir konteyner ID'sini komutumuza ekleyebiliriz. Son versiyonda ise `docker cantainer prune` komutu da ayni islemi yapmaktadir ve tum konteynerlari temizler. Son olarak ise, ihtiyacimiz olmayan imaji silmek icin ise `docker rmi` kullanilir.
+
+![alt text](docker_rm.png)
