@@ -26,3 +26,13 @@ It is a simple text file that contains a list of commands that the Docker client
 After installing the Docker, we can test Docker installation by running the following:
 
 ![alt text](hello_world.png)
+
+## HELLO WORLD
+
+### Playing with BusyBox
+
+Docker yuklenmesi ve calismasi test edildikten sonra, pratik kazanimi elde etmek adina basit bir uygulama gelistirerek Docker dunyasina girme vakti. Bu kisimda, **BusyBox** konteynerinin calistirilmasi ve buna bagli olarakta `docker run` komutu ele alinacaktir.
+
+Bu baglamda, asagidaki komutu terminalimize yazalim:
+
+![alt text](pull_busybox.png)
