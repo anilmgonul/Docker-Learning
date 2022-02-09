@@ -192,6 +192,10 @@ Bu asamalari takip edebilirsiniz:
 
 ![alt](platform.png)
 
+![alt](name_change.png)
+
+- Simdi ise uygulama kodumuzu yukleyebiliriz. Fakat, uygulamamiz Docker konteynerinda paketlendiginden sadece Elastic Beanstalk olarak bilgi sahibi olabiliyoruz. Bu asamada, `flask-app` icerisinde bulunan `Dockerrun.aws.json` dosyasini acip, imaj adini editlememiz gerekiyor ve olusturdugumuz imaj ismini kullanmamiz gerekiyor. Hemen sonrasinda ise EB ortamina yukleyebiliriz.
+
 ![alt](aqdocker_env.png)
 
-- Simdi ise uygulama kodumuzu yukleyebiliriz. Fakat, uygulamamiz Docker konteynerinda paketlendiginden sadece Elastic Beanstalk olarak bilgi sahibi olabiliyoruz.
+- Olusturdugumuz imaj AWS ortamina yuklendi ve URL'i acarak websitesine esirebiliriz. 
