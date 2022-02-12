@@ -286,4 +286,24 @@ RUN echo " print ENV variable : " $VARIABLE_2
 
 ![alt](env_dockerfile.png)
 
-Boylelikle `ARG VARIABLE_1` (**5 degeri**) `ENV VARIABLE_2` degerine atanmis oldu ve ayni degere sahip oldular. 
+Boylelikle `ARG VARIABLE_1` (**5 degeri**) `ENV VARIABLE_2` degerine atanmis oldu ve ayni degere sahip oldular.
+
+### Build the Docker Image using CMD Line Argument
+
+`--build-arg VARIABLE_1=7` degerini CMD kullanarak atayacagiz:
+
+```
+docker build -t test --build-arg VARIABLE_1=7 .
+```
+
+![alt](build_arg.png)
+
+### Build image by using ENV variables as CMD line argument
+
+Eger ayni komutu `VARIABLE_2=7` icin yazarsak ve ENV degerini gormek istersek VARIABLE_2 calistirilamiyor hatasi aliriz.
+
+```
+docker build -t test --build-arg VARIABLE_2=7 .
+```
+
+**[Warning] One or more build-args [VARIABLE_2] were not consumed***
