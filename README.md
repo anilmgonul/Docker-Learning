@@ -267,3 +267,23 @@ Docker dosyamiz calisti ve deger atamasi gerceklesti.**RUN echo 7**
 => => exporting layers                                0.0s
 => => writing image sha256:b6167e46c8b3e53556c840103  0.0s
 ```
+
+### What is ENV?
+
+- **ENV** bize konteyner icinde ilerde kullanabilecegimiz default degerleri saglar.
+- Command line argumanlarini kullanarak direkt olarak ENV degerlerini degistiremeyiz.
+- Eger ENV degerini CMD kullanarak degistirmemiz gerekiyorsa, ARG kullanmaliyiz ve ARG degerini ENV degerinin icine aktarmaliyiz.
+
+Bu ornegimizde iki tane deger atayacagiz ve ARG kullanarak ENV degerine tasiyacagiz:
+
+```
+FROM alpine:3.7
+ARG VARIABLE_1=5
+ENV VARIABLE_2=$VARIABLE_1
+RUN echo "print variable value:" $VARIABLE_1
+RUN echo " print ENV variable : " $VARIABLE_2
+```
+
+![alt](env_dockerfile.png)
+
+Boylelikle `ARG VARIABLE_1` (**5 degeri**) `ENV VARIABLE_2` degerine atanmis oldu ve ayni degere sahip oldular. 
