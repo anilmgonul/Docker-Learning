@@ -307,3 +307,35 @@ docker build -t test --build-arg VARIABLE_2=7 .
 ```
 
 **[Warning] One or more build-args [VARIABLE_2] were not consumed***
+
+### How to pass parameters to docker-compose file
+
+- Compose urun olusturma ve gelistirmede, test asamasinda ve CI ksiminda calisabilmektedir.
+- Compose ile uygulamanin alanini belirleriz, daha sonra ise, kullanacagimiz servisleri `docker-compose.yml` dosyasinda belirtiriz.
+- Son olarak da `docker compose up` komutuyla tum uygulamayi calistiririz.   
+
+```yml
+services:
+  web:
+    build: .
+    ports:
+      - "8000:5000"
+    volumes:
+      - .:/code
+      - logvolume01:/var/log
+    links:
+      - redis
+  redis:
+    image: redis
+volumes:
+  logvolume01: {}
+```
+
+![alt](compose_up.png)
+
+```cmd
+$docker-compose up -d
+$./run_tests
+$docker-compose down
+```
+![alt](compose_down.png)
