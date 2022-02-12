@@ -228,7 +228,7 @@ RUN echo $test1
 
 `cat Dockerfile` komutuyla beraber dosyamizin icini kontrol edebiliriz.
 
-![alt](cat_Dockerfile.png)
+![alt](cat_Dockerfiel.png)
 
 Docker dosyamizi calistiralim `run build .`
 
