@@ -198,4 +198,72 @@ Bu asamalari takip edebilirsiniz:
 
 ![alt](aqdocker_env.png)
 
-- Olusturdugumuz imaj AWS ortamina yuklendi ve URL'i acarak websitesine esirebiliriz. 
+- Olusturdugumuz imaj AWS ortamina yuklendi ve URL'i acarak websitesine esirebiliriz.
+
+## Environment Replacement
+
+### What is ARG?
+
+- **ARG** argumani Dockerfile olustururken deger atamak icin kullanilir.
+- ARG degerleri imaj olusturulduktan sonra mevcut olmazlar.
+- Calisan durumda olan bir konteynerda ARG degerlerine erisilemez.
+- Eger Dockerfile'da bir ARG degeri tanimlandiysa, her zaman onu override yaparak gecersiz kilabilir ve yerine yeni bir deger atayabiliriz.
+- Eger iki deger atamamiz gerekiyorsa CMD kullanarak `--build-arg` komutunu kullanmamiz gerekir.
+
+Asagida adim adim, bir Dockerfile nasil olusturulur ve `ARG` argumani kullanilarak iki farkli deger atamasi nasil gerceklestirilir onu gorecegiz:
+
+- Oncelikle directory'mizi secmemiz gerekiyor veyahut `mkdir` ve `touch` komutlariyla olusturdugumuz directory'nin icinde Dockerfile dosyasi olusturacagiz.
+
+![alt](vim_Dockerfile.png)
+
+Daha sonra ise vim mode'a gelip text editorumuzde asagidaki komutlari yazacagiz.
+
+```
+# getting base image from alpine
+
+FROM alpine:3.7
+ARG test1=5
+RUN echo $test1
+```
+
+`cat Dockerfile` komutuyla beraber dosyamizin icini kontrol edebiliriz.
+
+![alt](cat_Dockerfile.png)
+
+Docker dosyamizi calistiralim `run build .`
+
+```
+=> [internal] load build definition from Dockerfile   0.0s
+=> => transferring dockerfile: 120B                   0.0s
+=> [internal] load .dockerignore                      0.0s
+=> => transferring context: 2B                        0.0s
+=> [internal] load metadata for docker.io/library/al  2.1s
+=> [auth] library/alpine:pull token for registry-1.d  0.0s
+=> CACHED [1/2] FROM docker.io/library/alpine:3.7@sh  0.0s
+=> [2/2] RUN echo 5                                   0.4s
+=> exporting to image                                 0.1s
+=> => exporting layers                                0.1s
+=> => writing image sha256:0102a3216680b759d4e0ed524  0.0s
+```
+Degerimiz 5 olarak atandi. **[2/2] RUN echo 5**
+Atanan bu degere ise override yaparak yeni bir deger atamasi yapacagiz.
+
+```
+docker build --build-arg test1=7 .
+```
+
+Docker dosyamiz calisti ve deger atamasi gerceklesti.**RUN echo 7**
+
+```
+=> [internal] load build definition from Dockerfile   0.0s
+=> => transferring dockerfile: 36B                    0.0s
+=> [internal] load .dockerignore                      0.0s
+=> => transferring context: 2B                        0.0s
+=> [internal] load metadata for docker.io/library/al  1.8s
+=> [auth] library/alpine:pull token for registry-1.d  0.0s
+=> CACHED [1/2] FROM docker.io/library/alpine:3.7@sh  0.0s
+=> [2/2] RUN echo 7                                   0.4s
+=> exporting to image                                 0.0s
+=> => exporting layers                                0.0s
+=> => writing image sha256:b6167e46c8b3e53556c840103  0.0s
+```
