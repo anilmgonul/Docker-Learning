@@ -362,7 +362,7 @@ COPY [--chown=<user>:<group>] ["<src>",... "<dest>"]
 
 COPY yerel bir dosya/dizindeki kaynağı, hedefe kopyalar. Sadece Docker imajini olusturan makineden(host) saglanan dizini Docker imajinin kendisine kopyalamaya izin verir.
 
-## ENTRYPOINT
+## ENTRYPOINT vs CMD
 
 Dockerfiles'larda konteynerlar baslatildiginda he zaman calisacak yurutulebilir dosyalari ayarlamak icin `ENTRYPOINT` kullanilir.
 `CMD` komutlarina benzemeksizin `ENTRYPOINT` komutlari yoksayilamaz veyahut overridden yani bir degerin uzerine yeni bir deger atanamaz, CMD argumaniyla calistirilmis bir konteyner olsa bile.
@@ -371,3 +371,72 @@ Ayrica ENTRYPOINT islemleri ***shell*** ve ***exec*** formlarinda kullanilabilir
 * Exec form: `ENTRYPOINT [“executable”, “parameter1”, “parameter2”]`
 
 * Shell form: `ENTRYPOINT command parameter1 parameter2`
+
+#### Creating a Dockerfile with ENTRYPOINT and Building an Image
+
+`ENTRYPOINT` islemleri spesifik komutlaru Dockerfile olusturmak icin kullanilir.
+
+
+Asagidaki komutlari sirasiyla yazarak bir Dockerfile olusturalim:
+
+* Yeni bir klasor olusturalim `sudo mkdir MyDockerImage`
+* Olusturulan klasorun icine girelim `cd MyDockerImage` ve Dockerfile adinda bir dosya olusturalim `sudo touch Dockerfile`
+* Dockerfile'i text editor icinde acalim `nano Dockerfile`
+* Dickerfile dosyasinin icine yazilacak kontent:
+      ```
+      FROM ubuntu
+      MAINTAINER sofija
+      RUN apt-get update
+      CMD ["echo", "Hello World"]
+      ```
+* kaydedip, cikalim.
+* Daha sonra ise imajimizi olusturacagiz `sudo docker build .`
+
+#### Running Docker Container with CMD
+
+`sudo docker run [imaj isminiz]`   
+
+![alt](content_cmd.png)
+
+
+Bu kez ayni islemi `ENTRYPOINT` argumani ile gerceklestirecegiz.
+
+```
+FROM ubuntu
+MAINTAINER sofija
+RUN apt-get update
+ENTRYPOINT ["echo", "Hello World"]
+```
+
+![alt](content_entry.png)
+
+Goruldugu uzere **ayni** sonucu elde ettik.
+
+Yeni bir parametre ekleyelim ve ve `ENTRYPOINT` argumaninin override yani bir degerin uzerine atanmadigini kanitlayalim.
+
+```
+sudo docker run [konteyner ismi] KnowledgeBase
+```
+![alt](content_knowledge.png)
+
+#### ENTRYPOINT with CMD
+
+Son olarak Dockerfile'i bir kez daha editleyelim ve hem CMD hem de ENTRYPOINT argumanlarini beraner kullanalim.
+
+```
+FROM ubuntu
+MAINTAINER sofija
+RUN apt-get update
+ENTRYPOINT ["echo", "Hello World"]
+CMD ["World"]
+```
+
+![alt](content_together.png)
+
+```
+sudo docker run [konteyner_ismi] [isminiz]
+
+```
+![alt](content_name.png)
+
+Goruldugu uzere ciktimiz degisti ancak ENTRYPOINT argumaninin degeri yine degismedi. 
