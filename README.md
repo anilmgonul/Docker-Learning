@@ -439,4 +439,29 @@ sudo docker run [konteyner_ismi] [isminiz]
 ```
 ![alt](content_name.png)
 
-Goruldugu uzere ciktimiz degisti ancak ENTRYPOINT argumaninin degeri yine degismedi. 
+Goruldugu uzere ciktimiz degisti ancak ENTRYPOINT argumaninin degeri yine degismedi.
+
+## Docker Restart
+
+Konteynerlarin hayat dongusu icin Docker tarafindan saglanan bir kac opsiyon var. Normalde konteynerlar otomatik olarak yeniden baslatmazlar kendilerini. Restart policy (yeniden baslatma policesi) ile bu durum kontrol altina alinabilir. Yeniden baslatma konteynerlar calismayi durdurdugu zaman kullanilir.
+
+` $ docker restart <my_container>` en basit haliyle kullanim seklidir. Ancak farkli opsiyonlari da vardir. Daha spesifik yeniden baslatma policesi `--restart` bayragi uygulanarak kullanilabilir:
+
+`docker run --name httpd --restart always httpd:latest`
+
+Eger Docker Compose kullaniyorsak, `docker-compose.yml` dosyamiza *restart* argumanini eklememiz gerekir.
+
+```
+services:
+  httpd:
+    image: httpd:latest
+    restart: always
+```
+
+Bunun yani sira, yeniden baslatma sayilarini limitleme sansimiz da var. Bunu `on-failure` ile yapabiliriz. Yeniden baslatma sayisini belirleyerek, Docker'in pes etmesini ve daha fazla yeniden baslatmamasini saglayabiliriz:
+
+`docker run httpd:latest --restart on-failure:5`
+
+Son olarak, `log` stream konteynerin standart ciktisini ve hata aktarimini toplar. Eger hata sisteme kaydedildiyse, ciktinin icinde bilgi olarak gorebiliriz.
+
+`docker logs <my-container>`    
