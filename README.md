@@ -339,3 +339,35 @@ $./run_tests
 $docker-compose down
 ```
 ![alt](compose_down.png)
+
+## ADD vs COPY
+
+ADD argumani iki form halinde kullanilabilir.
+
+```
+ADD [--chown=<user>:<group>] <src>... <dest>
+ADD [--chown=<user>:<group>] ["<src>",... "<dest>"]
+
+```
+
+ADD yerel bir dosya/dizini VEYA URL’yi kaynak olarak alır ve hedefe kopyalar. Ayrıca bir tar dosyasını kaynaktan doğrudan hedefe çıkarabilirsiniz. [kaynak](https://topkaya.medium.com/docker-komut-%C3%B6rnekleri-c1e4852ed415)
+
+COPY argumani da iki form halinde kullanilabilir.
+
+```
+COPY [--chown=<user>:<group>] <src>... <dest>
+COPY [--chown=<user>:<group>] ["<src>",... "<dest>"]
+
+```
+
+COPY yerel bir dosya/dizindeki kaynağı, hedefe kopyalar. Sadece Docker imajini olusturan makineden(host) saglanan dizini Docker imajinin kendisine kopyalamaya izin verir.
+
+## ENTRYPOINT
+
+Dockerfiles'larda konteynerlar baslatildiginda he zaman calisacak yurutulebilir dosyalari ayarlamak icin `ENTRYPOINT` kullanilir.
+`CMD` komutlarina benzemeksizin `ENTRYPOINT` komutlari yoksayilamaz veyahut overridden yani bir degerin uzerine yeni bir deger atanamaz, CMD argumaniyla calistirilmis bir konteyner olsa bile.
+Ayrica ENTRYPOINT islemleri ***shell*** ve ***exec*** formlarinda kullanilabilir.
+
+* Exec form: `ENTRYPOINT [“executable”, “parameter1”, “parameter2”]`
+
+* Shell form: `ENTRYPOINT command parameter1 parameter2`
