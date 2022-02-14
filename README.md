@@ -465,3 +465,37 @@ Bunun yani sira, yeniden baslatma sayilarini limitleme sansimiz da var. Bunu `on
 Son olarak, `log` stream konteynerin standart ciktisini ve hata aktarimini toplar. Eger hata sisteme kaydedildiyse, ciktinin icinde bilgi olarak gorebiliriz.
 
 `docker logs <my-container>`    
+
+## Docker Stats
+
+Konteynerlarin harcadiklari kaynaklari canli istatistik halinde gosterebiliriz. Bunu yaparken gerek bir konteyneri gekekse birden fazla konteyneri display halinde gorup, yorum yapabiliriz. `docker stats` komutu bize bu verileri sunacaktir. Bunun yani sira, *docker stats* komutuyla kullanabilicegimiz opsiyonlar da mevcuttur.
+
+- `--all, -a` o anda calisan tum konteynerlarin verisini gosterir.
+- `--format` ise gorsel olarak Go temlate halinde sunar.
+- `--no-stream` anda gerceklesen istatistikleri devre disi birakir ve sadece ilk sonucu gosterir.
+
+Simdi ornek halinde inceleyelim:
+
+`$ docker stats`
+
+![alt](docker_stats.png)
+
+Eger spesifik olarak `--format` stringini kullanmazsak, yukarida gorulecegi uzere `CONTAINER ID and Name`, `CPU% and MEM%`, `MEM USAGE/LIMIT`, `NET I/O`, `BLOCK I/O` ve `PIDs` gosterir. Boylelikel konteynerin ID'sini ve ismini, hostta ve memory'de hafizada kullandigi verinin yuzdesini, konteynerin kullandigi toplam hafizayi, gonderilen ve alinan veri miktarini, okunan ve yanilan veri miktarini, son olarak ise konteynerin olusturdugu islemci miktarini gorebiliriz.
+
+Simdi ise spesifik bir konteyner secelim ve istatistigini gorelim:
+
+`$ docker stats brave_mcclintock thirsty_sinoussi`
+
+![alt](selected_stats.png)
+
+Halihazirda calisan konteynerlarin custom format ile de gorebiliriz.
+
+` $ docker stats --format "{{.Container}}: {{.CPUPerc}}"`
+
+![alt](dormat_stats.png)
+
+Tablo halinde calisan konteynerlarin isimlerini de `--format` halinde gosterebiliriz.
+
+`docker stats --format "table {{.Container}}\t{{.CPUPerc}}\t{{.MemUsage}}"`
+
+![alt](format_table.png)
