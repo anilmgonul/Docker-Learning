@@ -499,3 +499,53 @@ Tablo halinde calisan konteynerlarin isimlerini de `--format` halinde gosterebil
 `docker stats --format "table {{.Container}}\t{{.CPUPerc}}\t{{.MemUsage}}"`
 
 ![alt](format_table.png)
+
+## Docker Network
+
+  Containerlar ’ın birbiri arasında iletişim kurması için aynı network içerisinde olması gerekmektedir. Docker Network ile containerların iletişime geçmesi sağlanır. Docker network bizim için içerisinde network ayarlaması yapabileceğimiz bir altyapı sunmaktadır. Herhangi bir network connect olmasak da docker network default olarak container ların birbiri ile iletişimde olması için bridge network dahil eder. Bridge network ile container arası ve dış dünya ile iletişim bu network üzerinden olur. [alt](https://medium.com/devopsturkiye/docker-network-5ea98d4c26c1)
+
+### Docker Network Model (CNM)
+
+- Ayni ag uzerindeki konteynerlarin birbirleriyle iletisim kurmasini saglar
+- Coklu network trafigini bolumlere ayirir
+- Konteynerlara birden fazla network dahil edilmesini saglar
+
+![alt](network_model.png)
+
+***Sandbox*** Konteynerlari dis dunyadan izole eder ve internal, ic network ile iletisim saglamaz. Bunun yani sira, konteymerlarin IP ve MAC adresleri, DNS ayarlarinin yapilmasindan sorumludur.
+***Endpoint*** ise sadece bir network baglayabilir ve genel itibariyle Sandbox'i external, dis networke baglar.
+***Network*** konteynerdan konteynera tasinan ag yolunu belirler.
+***Driver*** ise agi yonetmekten sorumludur ve birden fazla surucunun katilmasiyla dagitim senaryosunu belirler.
+
+`docker network` komutu ile network komutlarini gorebiliriz.
+
+![alt](docker_network.png)
+
+Bunun yani sira `docker network ls` komutu ile anda bulunun uygun docker konteyner networklerini gorebiliriz.
+
+![alt](docker_networkls.png)
+
+* Goruldugu uzere bulunan networkun ID'si , ismi , Driver'i ve Scope'u mevcut. ***bridge*** konteryner networku **default** olarak gelir ve orneklerimizde bu Driver'i kullanacagiz.
+
+Simdi ***alpine*** imajini kullanarak iki tane konteyner olusturalim ve inceleyelim.
+
+`docker run -dit --name alpine1 alpine ash`  ve  `docker run -dit --name alpine2 alpine ash`  
+
+![alt](alpine_con.png)
+
+Simdi ise daya detayli bilgi alabilmek icin *bridge** networkunu inspect edecegiz.
+
+`docker network inspect bridge`
+
+![alt](network1.png)
+
+![alt](network2.png)
+
+Simdi ise baglanti kurabiliyormuyuz ve birbirleriyle iletisimi saglayabiliyor muyuz bunu inceleyecegiz. Bunu ise `ping <IP Adress>` komutu ile saglayacagiz.
+
+![alt](ping.png)
+
+
+Simdi ise konternerlarin birbirleri ile nasil iletisime gectigini gorelim. Bu senaryoda alpine1 ve alpine2'yi ele alacagiz.
+
+![alt](network3.png)
